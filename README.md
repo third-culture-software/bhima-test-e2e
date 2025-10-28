@@ -50,7 +50,8 @@ Setup files for the BHIMA End-to-End test server
 In some cases, the build-up of temporary files (in /tmp) can lead to the lack of disk space to 
 successfully run builds.  In that case, a fix is to purge the build computer nigtly.
 The script `purge_tmp` does that as well as make sure that the system is cleaned nightly.
-Install this using crontab.  Here is an example crontab line (adjust the path as needed):
+Install this using crontab.  Here is an example crontab line (adjust the path as needed both
+in the crontab line and in the 'purge_tmp' file):
 
   `0 23 * * * /home/jenkins/builds/purge_tmp`
 
