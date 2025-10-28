@@ -31,6 +31,7 @@ Setup files for the BHIMA End-to-End test server
    - See [Dev Install Docs](https://docs.bhi.ma/en/for-developers/installing-bhima.html)
    - Set up an appropriate .env file with db passwords, etc (see .env.sample)
    - Verify tests run manually before proceeding (fix any configuration issues)
+     - `cd /home/<user>/builds/Bhima`
      - `npm install`
      - `npm run test:clean`
      - `npm run test`
