@@ -9,7 +9,7 @@ IMAGE_NAME=bhima/e2e-tests:v1
 
 # Update the BHIMA repo first
 echo "Copying BHIMA repo"
-pushd /home/bhima/builds/Bhima >& /dev/null
+pushd /home/jenkins/builds/Bhima >& /dev/null
 git pull
 
 # Since we will be running tests, temporarily modify the .dockerignore
@@ -19,11 +19,11 @@ sed -i '/^.git/d' .dockerignore
 popd >& /dev/null
 
 echo "Building docker image $IMAGE_NAME"
-sudo docker build -f /home/bhima/builds/Dockerfile -t $IMAGE_NAME /home/bhima/builds/Bhima
+sudo docker build -f /home/jenkins/builds/Dockerfile -t $IMAGE_NAME /home/jenkins/builds/Bhima
 
 # Restore the .dockerignore file
 echo "Cleaning up"
-pushd /home/bhima/builds/Bhima >& /dev/null
+pushd /home/jenkins/builds/Bhima >& /dev/null
 git checkout .dockerignore
 popd >& /dev/null
 

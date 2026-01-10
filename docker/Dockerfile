@@ -36,21 +36,21 @@ RUN echo 'authentication-policy=mysql_native_password' >> /etc/mysql/mysql.conf.
 # Install redis
 RUN apt install -y redis-server
 
-# Install node 20
-RUN NODE_MAJOR=20  # Hardcoded into noudesource.list line below
+# Install node 22
+RUN NODE_MAJOR=22  # Hardcoded into noudesource.list line below
 RUN sudo mkdir -p /etc/apt/keyrings
 RUN curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key | sudo gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg
-RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_20.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
+RUN echo "deb [signed-by=/etc/apt/keyrings/nodesource.gpg] https://deb.nodesource.com/node_22.x nodistro main" | sudo tee /etc/apt/sources.list.d/nodesource.list
 RUN apt update
 RUN apt install -y nodejs
-RUN npm install -g npm@10.2.4
+RUN npm install -g npm@11.7.0
 
 # Install yarn (without re-installing NodeJS)
 RUN curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 RUN echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
 RUN apt update && sudo apt install yarn --no-install-recommends
 
-RUN npx playwright install
+RUN npx playwright install chromium
 
 # define working directory inside the container
 WORKDIR /usr/src/app
