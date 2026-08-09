@@ -30,6 +30,7 @@ fi
 # Check versions
 node --version
 npm --version
+mysql --version
 
 # Update the testing environment
 npm install
