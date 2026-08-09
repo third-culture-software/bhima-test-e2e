@@ -27,6 +27,10 @@ else
     git checkout test$PULL_REQUEST
 fi
 
+# Check versions
+node --version
+npm --version
+
 # Update the testing environment
 npm install
 npx update-browserslist-db@latest
